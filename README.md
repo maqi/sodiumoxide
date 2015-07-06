@@ -32,7 +32,7 @@ Most documentation is taken from NaCl, with minor modification where the API
 differs between the C and Rust versions.
 
 Documentation for the latest build can be found at
-[rust-ci](http://rust-ci.org/dnaq/sodiumoxide/doc/sodiumoxide/).
+[http://maidsafe.net/sodiumoxide](http://maidsafe.net/sodiumoxide).
 
 Examples
 --------
@@ -44,7 +44,7 @@ File bugs in the issue tracker
 
 Master git repository
 
-    git clone https://github.com/dnaq/sodiumoxide.git
+    git clone https://github.com/maidsafe/sodiumoxide.git
 
 License
 -------
