@@ -43,7 +43,7 @@
 //!  `crypto::verify`
 //!
 //!  `crypto::shorthash`
-#![crate_name = "sodiumoxide"]
+#![crate_name = "maidsafe-sodiumoxide"]
 #![crate_type = "lib"]
 #![warn(missing_docs)]
 #![warn(non_upper_case_globals)]
