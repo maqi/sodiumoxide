@@ -1,7 +1,11 @@
 env:
     global:
-        - secure: RVFYihimdtv0UqBioZp8pEhyYLLQ/md6DOg6h3F7IZP2XhXZvjxevVmLMTITuXKMIls5o0jjaQZfSNYg29ItD5y0/fEaNI0A6zZi6SDtdVQyO5opJP9oh0x/gmRrPMaJPVgmdTztJcIgtGapYVImkkX6A+UhET7Rw+VrGLEXbdY=
+        - secure: GGiFClBNf8cLtgZvYoPOEa+7CqeHS1a4JmCwKe7dBOhQ9oHwH1pds55e1lgQw0B9QYJHXjYozIOulUPICmzyh392fNy6/4Qrt994xEyCPVig4GUjz/B+23kZwMUjSptI17tkjtHSL2F08L+hF8PFOwRM2WXJhT5A70Y1R29N4Jg7b33VNljnyy8CFiZdFFJ390VlPOIGtGzo6imiLG3eew7mZqUwcKh2Tj9atU/VhlGzXqUXlSecpEnTjFPGY3rXBfCs2Gh61NKMdUQzmIMl6Ou38bS71CszupuaNrwIDDFKltWXdGesYCuU+f3PUl3cJW5dqZWmT3oJe4GoDfD1JmUmEPz0cClulTzsmiCbGFr2SgIUVI73ZoEYvdCec9EjjtP3UjVfNl4z8LLFlBuefvqDXZvC6+XcNlxiFb6Nj6gnZ15bK3J40sYE6FGZZSBBZjx7rCitnnbT6EYQ2yorWZlAFPMbJrc/jS6nhe1fBgdSelGylYKIPs0sa7hJnDZE3SM9inLjoXTchtZImAinXvan3sYjj4Ifr53wlsx3Ig+1Q2n53TMQuiFbuOe9UeEp9agqY4qyCp4dRPTcyk3MYpSfqxMudpKlO8pwM0Up7OnyZJI2AcH8BBVLAfNSkDRk2O9SDmXK+G7Q67jlY4P7AfFgJR0PQ8s4JbrPmqvmVIw=
 language: rust
+branches:
+    only:
+        - master
+        - gh-pages
 install:
     - wget https://github.com/jedisct1/libsodium/releases/download/1.0.3/libsodium-1.0.3.tar.gz
     - tar xvfz libsodium-1.0.3.tar.gz
@@ -9,8 +13,37 @@ install:
 script:
     - cargo build --verbose
     - cargo test --verbose
-    - cargo doc
-after_script:
-    # the doc directory needs to be in the root for rust-ci
-    - mv target/doc doc
-    - curl http://www.rust-ci.org/artifacts/put?t=$RUSTCI_TOKEN | sh
+after_script: |
+  if  [[ $TRAVIS_BRANCH = master ]] && [[ $TRAVIS_PULL_REQUEST = false ]]; then
+    cargo doc &&
+    echo "<meta http-equiv=refresh content=0;url=`echo $TRAVIS_REPO_SLUG | cut -d '/' -f 2`/index.html>" > target/doc/index.html &&
+    sudo pip install ghp-import &&
+    mkdir docs-stage &&
+    COMMIT_MSG=$(git log -1 | tr '[:upper:]' '[:lower:]' | grep "version change to " | tr -d ' ') &&
+    git clone https://github.com/${TRAVIS_REPO_SLUG}.git  docs-stage &&
+    cd docs-stage &&
+    git checkout gh-pages;
+    rm -rf .git*;
+    # lines 24 - 28 is a patch script for handling old gh-pages structure
+    OLD_FILE=$(ls | grep "main.js");
+    if [[ $OLD_FILE == main* ]]; then
+      rm -rf * &&
+      echo "<meta http-equiv=refresh content=0;url=master/`echo $TRAVIS_REPO_SLUG | cut -d '/' -f 2`/index.html>" > index.html;
+    fi
+    if [[ $COMMIT_MSG == versionchangeto* ]];  then
+      VERSION=${COMMIT_MSG##*to} &&
+      mkdir -p $VERSION &&
+      mkdir -p latest &&
+      cp -rf ../target/doc/* $VERSION &&
+      cp -rf ../target/doc/* latest &&
+      git config --global user.email dev@maidsafe.net &&
+      git config --global user.name maidsafe-jenkins &&
+      git tag $VERSION -a -m "Version $VERSION" &&
+      git push -q https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG} --tags;
+    fi
+    mkdir -p master
+    cp -rf ../target/doc/* master &&
+    cd .. &&
+    ghp-import -n docs-stage &&
+    git push -fq https://${GH_TOKEN}@github.com/${TRAVIS_REPO_SLUG}.git gh-pages;
+  fi
