@@ -1,5 +1,5 @@
 [package]
-name = "sodiumoxide"
+name = "maidsafe-sodiumoxide"
 description = "Fast cryptographic library for Rust (bindings to libsodium)"
 documentation = "http://maidsafe.net/sodiumoxide/latest"
 repository = "https://github.com/maidsafe/sodiumoxide"
