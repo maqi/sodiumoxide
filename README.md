@@ -55,4 +55,4 @@ Status
 
 | Crate | Linux | Windows | OSX |
 |:-----:|:-----:|:-------:|:---:|
-| N/A |[![Build Status](https://travis-ci.org/maidsafe/sodiumoxide.svg?branch=master)](https://travis-ci.org/maidsafe/sodiumoxide)| N/A | N/A |
+| N/A |[![Build Status](https://travis-ci.org/maidsafe/sodiumoxide.svg?branch=master)](https://travis-ci.org/maidsafe/sodiumoxide)| [![Build Status](http://ci.maidsafe.net:8080/buildStatus/icon?job=sodiumoxide_win64_status_badge)](http://ci.maidsafe.net:8080/job/sodiumoxide_win64_status_badge/) | [![Build Status](http://ci.maidsafe.net:8080/buildStatus/icon?job=sodiumoxide_osx_status_badge)](http://ci.maidsafe.net:8080/job/sodiumoxide_osx_status_badge/) |
