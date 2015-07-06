@@ -49,3 +49,10 @@ Master git repository
 License
 -------
 MIT
+
+Status
+------
+
+| Crate | Linux | Windows | OSX |
+|:-----:|:-----:|:-------:|:---:|
+| N/A |[![Build Status](https://travis-ci.org/maidsafe/sodiumoxide.svg?branch=master)](https://travis-ci.org/maidsafe/sodiumoxide)| N/A | N/A |
