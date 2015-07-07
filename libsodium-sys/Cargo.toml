@@ -1,16 +1,16 @@
 [package]
-name = "libsodium-sys"
+name = "maidsafe_libsodium_sys"
 description = "FFI binding to libsodium"
-repository = "https://github.com/dnaq/sodiumoxide.git"
+repository = "https://github.com/maidsafe/sodiumoxide.git"
 keywords = ["libsodium", "NaCl", "crypto"]
-version = "0.0.5"
+version = "0.0.7"
 authors = ["dnaq"]
 links = "sodium"
 build = "build.rs"
 license = "MIT"
 
 [lib]
-name = "libsodium_sys"
+name = "maidsafe_libsodium_sys"
 path = "lib.rs"
 
 [dependencies]
