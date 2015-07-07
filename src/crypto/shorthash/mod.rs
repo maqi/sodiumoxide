@@ -14,7 +14,7 @@
 //!
 //! # Example
 //! ```
-//! use sodiumoxide::crypto::shorthash;
+//! use maidsafe_sodiumoxide::crypto::shorthash;
 //!
 //! let key = shorthash::gen_key();
 //! let data_to_hash = b"some data";

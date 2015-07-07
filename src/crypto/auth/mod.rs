@@ -35,7 +35,7 @@
 //!
 //! # Example
 //! ```
-//! use sodiumoxide::crypto::auth;
+//! use maidsafe_sodiumoxide::crypto::auth;
 //!
 //! let key = auth::gen_key();
 //! let data_to_authenticate = b"some data";

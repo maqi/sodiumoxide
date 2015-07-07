@@ -52,7 +52,7 @@
 //!
 //! # Example (keystream generation)
 //! ```
-//! use sodiumoxide::crypto::stream;
+//! use maidsafe_sodiumoxide::crypto::stream;
 //!
 //! let key = stream::gen_key();
 //! let nonce = stream::gen_nonce();
@@ -61,7 +61,7 @@
 //!
 //! # Example (encryption)
 //! ```
-//! use sodiumoxide::crypto::stream;
+//! use maidsafe_sodiumoxide::crypto::stream;
 //!
 //! let key = stream::gen_key();
 //! let nonce = stream::gen_nonce();
@@ -73,7 +73,7 @@
 //!
 //! # Example (in place encryption)
 //! ```
-//! use sodiumoxide::crypto::stream;
+//! use maidsafe_sodiumoxide::crypto::stream;
 //!
 //! let key = stream::gen_key();
 //! let nonce = stream::gen_nonce();
