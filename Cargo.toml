@@ -11,7 +11,7 @@ license = "MIT"
 
 [dependencies]
 libc = "*"
-maidsafe_libsodium_sys = "*"
+maidsafe_libsodium-sys = "*"
 rustc-serialize = "*"
 
 [dev-dependencies.cbor]
