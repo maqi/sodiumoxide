@@ -5,16 +5,16 @@ documentation = "http://maidsafe.net/sodiumoxide"
 repository = "https://github.com/maidsafe/sodiumoxide"
 readme = "README.md"
 keywords = ["crypto", "NaCl", "libsodium"]
-version = "0.0.8"
+version = "0.0.11"
 authors = ["dnaq"]
 license = "MIT"
 
 [dependencies]
 libc = "*"
-maidsafe_libsodium-sys = "*"
+maidsafe_libsodium_sys = "*"
 rustc-serialize = "*"
 
-[dev-dependencies.cbor]
+[dev-dependencies]
 cbor = "*"
 
 [features]
