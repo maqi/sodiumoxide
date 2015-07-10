@@ -140,7 +140,7 @@ pub fn verify_detached(&Signature(ref sig): &Signature,
                        m: &[u8],
                        &PublicKey(ref pk): &PublicKey) -> bool {
     unsafe {
-        0 == ffi::crypto_sign_ed25519_verify_detached(sig,
+        0 == ffi::crypto_sign_ed25519_verify_detached(sig.as_ptr(),
                                                       m.as_ptr(),
                                                       m.len() as c_ulonglong,
                                                       pk)

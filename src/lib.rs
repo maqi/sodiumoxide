@@ -50,7 +50,7 @@
 #![warn(non_camel_case_types)]
 #![warn(unused_qualifications)]
 
-extern crate maidsafe_libsodium_sys as ffi;
+extern crate libsodium_sys as ffi;
 extern crate libc;
 extern crate rustc_serialize;
 
