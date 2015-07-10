@@ -9,7 +9,7 @@ branches:
 install:
     - wget https://github.com/maidsafe/QA/raw/master/Bash%20Scripts/Travis/install_libsodium.sh
     - chmod 755 install_libsodium.sh
-    - ./install_libsodium.sh
+    - sudo ./install_libsodium.sh
 script:
     - cargo build --verbose
     - cargo test --verbose
