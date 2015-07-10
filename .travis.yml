@@ -7,7 +7,7 @@ branches:
         - master
         - gh-pages
 install:
-    - sudo curl -sSL https://github.com/maidsafe/QA/raw/master/Bash%20Scripts/Travis/install_libsodium.sh | bash
+    -  sudo curl -sSL https://github.com/maidsafe/QA/raw/master/Bash%20Scripts/Travis/install_libsodium.sh | bash
 script:
     - cargo build --verbose
     - cargo test --verbose
