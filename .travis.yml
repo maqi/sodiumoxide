@@ -12,7 +12,7 @@ install:
     - cd libsodium-1.0.3
     - ./configure --prefix=/usr --enable-shared=no
     - CORES=$(nproc)
-    - echo CORES: $CORES
+    - echo $CORES
     - make check $CORES
     - sudo make install
     - cd ..
